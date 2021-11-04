@@ -19,3 +19,8 @@ class MyPreprocessor:
         if array.dtype not in [int, float]:
             raise Exception('Please convert your array to integer or float.')
         return array * self.constant
+
+    def exponent_constant(self, array):
+        if array.dtype not in [int, float]:
+            raise Exception('Please convert your array to integer or float.')
+        return array ** self.constant
