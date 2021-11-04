@@ -1,27 +1,32 @@
 import numpy as np
-from dspt14.example import plus_1, times_2
+from dspt14.example import my_preprocessor
 from numpy.testing import assert_array_equal
 
 
 def test_plus_1(base_test_array):
-    assert_array_equal(np.array([2, 3, 4, 5, 6]), plus_1(base_test_array))
+    pp = my_preprocessor(constant=1)
+    assert_array_equal(np.array([2, 3, 4, 5, 6]), pp.plus_constant(base_test_array))
 
 
 def test_times_2(base_test_array):
-    assert_array_equal(np.array([2, 4, 6, 8, 10]), times_2(base_test_array))
+    pp = my_preprocessor(constant=2)
+    assert_array_equal(np.array([2, 4, 6, 8, 10]), pp.times_constant(base_test_array))
 
 
 def test_plus_1_null(null_test_array):
-    assert_array_equal(np.array([2, 3, np.NaN, 5, 6]), plus_1(null_test_array))
+    pp = my_preprocessor(constant=1)
+    assert_array_equal(np.array([2, 3, np.NaN, 5, 6]), pp.plus_constant(null_test_array))
 
 
 def test_times_2_null(null_test_array):
-    assert_array_equal(np.array([2, 4, np.NaN, 8, 10]), times_2(null_test_array))
+    pp = my_preprocessor(constant=2)
+    assert_array_equal(np.array([2, 4, np.NaN, 8, 10]), pp.times_constant(null_test_array))
 
 
 def test_plus_1_string(string_test_array):
+    pp = my_preprocessor(constant=1)
     try:
-        plus_1(string_test_array)
+        pp.times_constant(string_test_array)
     except Exception:
         pass
     else:
@@ -29,8 +34,9 @@ def test_plus_1_string(string_test_array):
 
 
 def test_times_2_string(string_test_array):
+    pp = my_preprocessor(constant=2)
     try:
-        times_2(string_test_array)
+        pp.times_constant(string_test_array)
     except Exception:
         pass
     else:
