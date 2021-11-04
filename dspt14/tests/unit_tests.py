@@ -1,4 +1,3 @@
-import pytest
 import numpy as np
 from dspt14.example import plus_1, times_2
 from numpy.testing import assert_array_equal
