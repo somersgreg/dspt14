@@ -1,15 +1,16 @@
 import pandas as pd
+import numpy as np
 
-df = pd.DataFrame([[1, 1, 1], [2, 2, 3]])
 
-
-class my_preprocessor():
+class MyPreprocessor:
     constant = None
 
     def __init__(self, constant):
         self.constant = constant
 
     def plus_constant(self, array):
+        if not isinstance(array, np.ndarray):
+            raise Exception('Only numpy arrays are accepted')
         if array.dtype not in [int, float]:
             raise Exception('Please convert your array to integer or float.')
         return array + self.constant
